@@ -1,0 +1,111 @@
+<header class="w-100">
+    <div class="container mx-auto">
+        <div class="row align-items-center py-3">
+            <h2 class="col-lg-3 mb-3 m-lg-0">Book Manager</h2>
+            <div class="controls col-lg-9 row px-0 mx-0">
+                <div class="mb-3 mb-md-0 col-md-7">
+                    <div class="input-group m-0 ">
+                        <input type="text" class="form-control" [(ngModel)]="bookIdNumber"
+                            placeholder="Add a Book by Open Library ID Number">
+                        <button class="btn btn-outline-secondary" (click)="addBook(bookIdNumber)"
+                            type="button">Add</button>
+                    </div>
+                </div>
+
+                <div class="mb-3 mb-md-0 col-md-5">
+                    <div class="input-group mb-0">
+                        <label class="input-group-text" for="inputGroupSelect01">Sort Order</label>
+                        <select [ngModel]="sortOrder" (ngModelChange)="onChangeSort($event)" class="form-select"
+                            id="inputGroupSelect01">
+                            <option  value="add" selected>Order Added</option>
+                            <option value="title">Title</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="w-100 py-4">
+    <div class="container mx-auto">
+        <div class="row" *ngIf="listBook.length>0">
+            <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let book of listBook">
+                <div class="item-book row px-0 mx-0">
+                    <div class="head-book px-0 col-12">
+                        <div class="row inf-row-book mx-0">
+                            <div class="info-heade col-4">
+                                Title
+                            </div>
+                            <div class="info-books col-8">
+                                {{book.value.title}}
+                            </div>
+                        </div>
+
+                        <div class="row inf-row-book mx-0">
+                            <div class="info-heade col-4">
+                                Published year
+                            </div>
+                            <div class="info-books col-8">
+                                {{book.value.publish_date}}
+                            </div>
+                        </div>
+
+                        <div class="row inf-row-book mx-0">
+                            <div class="info-heade col-4">
+                                Author
+                            </div>
+                            <div class="info-books col-8">
+                                {{book.value.by_statement}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="dsc-text col-12 mb-0 py-3">
+                        {{book.value.subtitle}}
+                    </p>
+                    <button class="eddit-book" (click)="open(mymodal, book)">
+                        Eddit the Book
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">EDIT BOOK</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            ×
+        </button>
+    </div>
+    
+    <div class="modal-body">
+        <div class="mb-3">
+            <label   class="form-label">ID</label>
+            <input type="email" class="form-control" disabled [(ngModel)]="edditBook.id" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label   class="form-label">Title</label>
+            <input type="email" class="form-control" [(ngModel)]="edditBook.title"  placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label   class="form-label">Author</label>
+            <input type="email" class="form-control" [(ngModel)]="edditBook.author"  placeholder="Author">
+        </div>
+        <div class="mb-3">
+            <label   class="form-label">Published</label>
+            <input type="email" class="form-control" [(ngModel)]="edditBook.published"  placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Description</label>
+            <textarea class="form-control"  [(ngModel)]="edditBook.description" placeholder="Description.." rows="3"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click'); edditBookNew(edditBook)">Save</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cansel</button>
+    </div>
+</ng-template>
