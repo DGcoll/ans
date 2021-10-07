@@ -5,12 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookManagerComponent } from './components/book-manager/book-manager.component';
+import { NutritionAnalysisComponent } from './components/nutrition-analysis/nutrition-analysis.component';
+import { AnalysisResultComponent } from './components/nutrition-analysis/analysis-result/analysis-result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookManagerComponent,
+    NutritionAnalysisComponent,
+    AnalysisResultComponent,
   ],
   imports: [
     BrowserModule,

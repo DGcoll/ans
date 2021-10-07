@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Quantity</th>
+        <th scope="col">Unit</th>
+        <th scope="col">Food</th>
+        <th scope="col">Calories</th>
+        <th scope="col">Weight</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let analysis of analysisResult.ingredients">
+      <tr *ngFor="let analysis2 of analysis.parsed">
+        <td >{{analysis2.quantity}}</td>
+        <td >{{analysis2.measure}}</td>
+        <td >{{analysis2.foodMatch}}</td>
+        <td >{{analysis2.nutrients.ENERC_KCAL.quantity | number: '1.0-0'}} kcal</td>
+        <td >{{analysis2.weight| number: '1.0-0'}} g</td>
+      </tr>
+    </tbody>
+  </table>

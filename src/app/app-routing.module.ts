@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookManagerComponent } from './components/book-manager/book-manager.component';
+import { NutritionAnalysisComponent } from './components/nutrition-analysis/nutrition-analysis.component';
 
 const routes: Routes =  ([
   {
     path: "",
-    component: BookManagerComponent,
+    component: NutritionAnalysisComponent,
     children: [],
   }
 ]) as any;
